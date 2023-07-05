@@ -11,14 +11,25 @@
 		A293ED672A50F4FF00B6D049 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293ED662A50F4FF00B6D049 /* ContentView.swift */; };
 		A293ED692A50F50100B6D049 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A293ED682A50F50100B6D049 /* Assets.xcassets */; };
 		A293ED6C2A50F50100B6D049 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A293ED6B2A50F50100B6D049 /* Preview Assets.xcassets */; };
+		A293ED772A50F5EA00B6D049 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293ED762A50F5EA00B6D049 /* LocationManager.swift */; };
+		A293ED792A51EBA700B6D049 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293ED782A51EBA700B6D049 /* HeaderView.swift */; };
+		A293ED7B2A51EBC800B6D049 /* HourlyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293ED7A2A51EBC800B6D049 /* HourlyForecastView.swift */; };
+		A293ED7D2A51EBD700B6D049 /* ExtendedForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293ED7C2A51EBD700B6D049 /* ExtendedForecastView.swift */; };
+		A293ED802A52072700B6D049 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293ED7F2A52072700B6D049 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A27DF64B2A53871600B9D9DF /* SunShield.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SunShield.entitlements; sourceTree = "<group>"; };
 		A293ED612A50F4FF00B6D049 /* SunShield.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SunShield.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A293ED642A50F4FF00B6D049 /* SunShieldApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunShieldApp.swift; sourceTree = "<group>"; };
 		A293ED662A50F4FF00B6D049 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A293ED682A50F50100B6D049 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A293ED6B2A50F50100B6D049 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A293ED762A50F5EA00B6D049 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A293ED782A51EBA700B6D049 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		A293ED7A2A51EBC800B6D049 /* HourlyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastView.swift; sourceTree = "<group>"; };
+		A293ED7C2A51EBD700B6D049 /* ExtendedForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedForecastView.swift; sourceTree = "<group>"; };
+		A293ED7F2A52072700B6D049 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +62,11 @@
 		A293ED632A50F4FF00B6D049 /* SunShield */ = {
 			isa = PBXGroup;
 			children = (
-				A293ED642A50F4FF00B6D049 /* SunShieldApp.swift */,
-				A293ED662A50F4FF00B6D049 /* ContentView.swift */,
-				A293ED682A50F50100B6D049 /* Assets.xcassets */,
+				A27DF64B2A53871600B9D9DF /* SunShield.entitlements */,
+				A293ED722A50F58600B6D049 /* Views */,
+				A293ED732A50F59000B6D049 /* ViewModels */,
+				A293ED742A50F59700B6D049 /* Models */,
+				A293ED752A50F59F00B6D049 /* Other */,
 				A293ED6A2A50F50100B6D049 /* Preview Content */,
 			);
 			path = SunShield;
@@ -65,6 +78,42 @@
 				A293ED6B2A50F50100B6D049 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A293ED722A50F58600B6D049 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A293ED662A50F4FF00B6D049 /* ContentView.swift */,
+				A293ED782A51EBA700B6D049 /* HeaderView.swift */,
+				A293ED7A2A51EBC800B6D049 /* HourlyForecastView.swift */,
+				A293ED7C2A51EBD700B6D049 /* ExtendedForecastView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A293ED732A50F59000B6D049 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A293ED742A50F59700B6D049 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A293ED752A50F59F00B6D049 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				A293ED642A50F4FF00B6D049 /* SunShieldApp.swift */,
+				A293ED762A50F5EA00B6D049 /* LocationManager.swift */,
+				A293ED7F2A52072700B6D049 /* Extensions.swift */,
+				A293ED682A50F50100B6D049 /* Assets.xcassets */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +188,11 @@
 			files = (
 				A293ED672A50F4FF00B6D049 /* ContentView.swift in Sources */,
 				A293ED652A50F4FF00B6D049 /* SunShieldApp.swift in Sources */,
+				A293ED772A50F5EA00B6D049 /* LocationManager.swift in Sources */,
+				A293ED792A51EBA700B6D049 /* HeaderView.swift in Sources */,
+				A293ED7D2A51EBD700B6D049 /* ExtendedForecastView.swift in Sources */,
+				A293ED7B2A51EBC800B6D049 /* HourlyForecastView.swift in Sources */,
+				A293ED802A52072700B6D049 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,12 +318,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SunShield/SunShield.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SunShield/Preview Content\"";
 				DEVELOPMENT_TEAM = HKNXW42UPG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "SunShield requires your location (always).";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "SunShield requires your location (when in use).";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -293,12 +350,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SunShield/SunShield.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SunShield/Preview Content\"";
 				DEVELOPMENT_TEAM = HKNXW42UPG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "SunShield requires your location (always).";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "SunShield requires your location (when in use).";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
