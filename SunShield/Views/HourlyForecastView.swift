@@ -21,7 +21,7 @@ struct HourlyForecastView: View {
                 HStack {
                     ForEach(hourWeatherList, id: \.date) { hourWeather in
                         VStack(spacing: 20) {
-                            Text(hourWeather.date.formatted(date: .omitted, time: .shortened))
+                            Text(hourWeather.date.formatTimeAbbreviated())
                             Text("\(hourWeather.uvIndex.value)")
                             Text(hourWeather.uvIndex.category.rawValue)
                             
