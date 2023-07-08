@@ -9,12 +9,12 @@ import SwiftUI
 import WeatherKit
 
 struct ContentView: View {
-    
+
     @StateObject var locationManager = LocationManager()
     @State private var weather: Weather?
-    
+
     let weatherService = WeatherService.shared
-    
+
     var hourlyWeatherData: [HourWeather] {
         if let weather {
             return Array(weather.hourlyForecast.filter {hourlyWeather in
@@ -24,19 +24,19 @@ struct ContentView: View {
             return []
         }
     }
-    
+
     var body: some View {
         VStack {
             if let weather {
                 // header
                 HeaderView(locationManager: locationManager, weather: weather)
-                
+
                 // hourly forecast
                 HourlyForecastView(hourWeatherList: hourlyWeatherData)
 
-                // extended (10-day) forecast
-                ExtendedForecastView(dayWeatherList: weather.dailyForecast.forecast)
-                
+//                // extended (10-day) forecast
+//                ExtendedForecastView(dayWeatherList: weather.dailyForecast.forecast)
+
             }
         }
         .padding(30)

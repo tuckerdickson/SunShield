@@ -13,7 +13,7 @@ struct ExtendedForecastView: View {
     let dayWeatherList: [DayWeather]
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading){
             Text("10-DAY FORECAST")
                 .font(.caption)
                 .opacity(0.5)

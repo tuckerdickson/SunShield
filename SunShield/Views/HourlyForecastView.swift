@@ -14,52 +14,27 @@ struct HourlyForecastView: View {
     let hourWeatherList: [HourWeather]
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
+            
             Text("HOURLY FORECAST")
-                .font(.caption)
-                .opacity(0.5)
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.black)
+            
+            
             ScrollView(.horizontal) {
-                Chart {
+                HStack {
                     ForEach(hourWeatherList, id: \.date) { hourWeather in
-                        BarMark(
-                            x: .value("Hour", hourWeather.date.formatTimeAbbreviated()),
-                            y: .value("UV Index", hourWeather.uvIndex.value)
-                        )
-                        .annotation(position: .top) {
-                            Text(hourWeather.uvIndex.value.formatted())
-                                .foregroundColor(.white)
-                        }
-                        .foregroundStyle(
-                            .linearGradient(
-                                colors: [.green, .red],
-                                startPoint: .bottom,
-                                endPoint: .top
-                            )
-                        )
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                        .alignsMarkStylesWithPlotArea()
+                        BarView(weather: hourWeather)
                     }
                 }
-                .chartXAxis {
-                    AxisMarks { value in
-                        AxisValueLabel()
-                            .foregroundStyle(.white)
-                    }
-                }
-                .chartYAxis {
-                    AxisMarks { value in
-
-                    }
-                }
-                .frame(width: CGFloat(hourWeatherList.count) * 45)
             }
         }
         .padding()
-        .background {
-            Color.blue
-        }
-        .clipShape(RoundedRectangle(cornerRadius: 20))
-        .foregroundColor(.white)
+//        .background {
+//            Color.blue
+//        }
+//        .clipShape(RoundedRectangle(cornerRadius: 20))
     }
 }
 

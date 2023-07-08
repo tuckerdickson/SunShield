@@ -16,6 +16,8 @@
 		A293ED7B2A51EBC800B6D049 /* HourlyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293ED7A2A51EBC800B6D049 /* HourlyForecastView.swift */; };
 		A293ED7D2A51EBD700B6D049 /* ExtendedForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293ED7C2A51EBD700B6D049 /* ExtendedForecastView.swift */; };
 		A293ED802A52072700B6D049 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293ED7F2A52072700B6D049 /* Extensions.swift */; };
+		A2DC958D2A5998B7003CDEF2 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC958C2A5998B7003CDEF2 /* BarView.swift */; };
+		A2DC958F2A599CF0003CDEF2 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC958E2A599CF0003CDEF2 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		A293ED7A2A51EBC800B6D049 /* HourlyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastView.swift; sourceTree = "<group>"; };
 		A293ED7C2A51EBD700B6D049 /* ExtendedForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedForecastView.swift; sourceTree = "<group>"; };
 		A293ED7F2A52072700B6D049 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A2DC958C2A5998B7003CDEF2 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
+		A2DC958E2A599CF0003CDEF2 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,8 @@
 				A293ED782A51EBA700B6D049 /* HeaderView.swift */,
 				A293ED7A2A51EBC800B6D049 /* HourlyForecastView.swift */,
 				A293ED7C2A51EBD700B6D049 /* ExtendedForecastView.swift */,
+				A2DC958C2A5998B7003CDEF2 /* BarView.swift */,
+				A2DC958E2A599CF0003CDEF2 /* TestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,11 +192,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2DC958D2A5998B7003CDEF2 /* BarView.swift in Sources */,
 				A293ED672A50F4FF00B6D049 /* ContentView.swift in Sources */,
 				A293ED652A50F4FF00B6D049 /* SunShieldApp.swift in Sources */,
 				A293ED772A50F5EA00B6D049 /* LocationManager.swift in Sources */,
 				A293ED792A51EBA700B6D049 /* HeaderView.swift in Sources */,
 				A293ED7D2A51EBD700B6D049 /* ExtendedForecastView.swift in Sources */,
+				A2DC958F2A599CF0003CDEF2 /* TestView.swift in Sources */,
 				A293ED7B2A51EBC800B6D049 /* HourlyForecastView.swift in Sources */,
 				A293ED802A52072700B6D049 /* Extensions.swift in Sources */,
 			);
