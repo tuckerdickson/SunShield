@@ -42,11 +42,14 @@ struct HourlyBarView: View {
                     .foregroundColor(.white)
                     .frame(width: 30, height: 30)
                 Text(String(weather.uvIndex.value))
+                    .font(.body)
+                    .fontWeight(.bold)
                     .foregroundColor(colorText)
             }
             
             // time below bar mark
             Text(weather.date.formatTimeAbbreviated())
+                .font(.footnote)
                 .foregroundColor(colorText)
         }
     }

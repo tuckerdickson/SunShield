@@ -25,11 +25,15 @@ struct ExtendedForecastView: View {
             VStack() {
                 ForEach(dayWeatherList, id: \.date) { dayWeather in
                     HStack {
+                        // day abbreviation
                         Text(dayWeather.date.formatDayAbbreviated())
                             .foregroundColor(colorText)
-                        Text(String(dayWeather.uvIndex.value))
-                            .foregroundColor(getColorUV(for: dayWeather))
                         Spacer()
+                        
+                        // uv information
+                        Text("\(dayWeather.uvIndex.value) \(dayWeather.uvIndex.category.description)")
+                            .foregroundColor(getColorUV(for: dayWeather))
+                        
                     }
                 }
             }

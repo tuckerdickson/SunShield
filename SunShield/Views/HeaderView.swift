@@ -39,10 +39,18 @@ struct HeaderView: View {
             
             Spacer()
             
-            Text(String(weather.currentWeather.uvIndex.value))
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(colorUV)
+            ZStack {
+                
+                Circle()
+                    .stroke(colorUV, lineWidth: 5)
+                    .foregroundColor(colorUV)
+                    .frame(width: 80, height: 80)
+                
+                Text(String(weather.currentWeather.uvIndex.value))
+                    .font(.system(size: 64))
+                    .fontWeight(.bold)
+                    .foregroundColor(colorUV)
+            }
         }
         .padding()
     }
