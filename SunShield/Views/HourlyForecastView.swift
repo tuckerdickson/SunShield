@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WeatherKit
+import Charts
 
 struct HourlyForecastView: View {
     
@@ -17,19 +18,40 @@ struct HourlyForecastView: View {
             Text("HOURLY FORECAST")
                 .font(.caption)
                 .opacity(0.5)
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
+            ScrollView(.horizontal) {
+                Chart {
                     ForEach(hourWeatherList, id: \.date) { hourWeather in
-                        VStack(spacing: 20) {
-                            Text(hourWeather.date.formatTimeAbbreviated())
-                            Text("\(hourWeather.uvIndex.value)")
-                            Text(hourWeather.uvIndex.category.rawValue)
-                            
-                            Image(systemName: "\(hourWeather.symbolName).fill")
+                        BarMark(
+                            x: .value("Hour", hourWeather.date.formatTimeAbbreviated()),
+                            y: .value("UV Index", hourWeather.uvIndex.value)
+                        )
+                        .annotation(position: .top) {
+                            Text(hourWeather.uvIndex.value.formatted())
+                                .foregroundColor(.white)
                         }
-                        .padding()
+                        .foregroundStyle(
+                            .linearGradient(
+                                colors: [.green, .red],
+                                startPoint: .bottom,
+                                endPoint: .top
+                            )
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .alignsMarkStylesWithPlotArea()
                     }
                 }
+                .chartXAxis {
+                    AxisMarks { value in
+                        AxisValueLabel()
+                            .foregroundStyle(.white)
+                    }
+                }
+                .chartYAxis {
+                    AxisMarks { value in
+
+                    }
+                }
+                .frame(width: CGFloat(hourWeatherList.count) * 45)
             }
         }
         .padding()

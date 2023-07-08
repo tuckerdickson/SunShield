@@ -6,15 +6,16 @@
 //
 
 import SwiftUI
+import WeatherKit
 
 struct HeaderView: View {
+    let locationManager: LocationManager
+    let weather: Weather
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct HeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        HeaderView()
+        VStack {
+            Text(locationManager.city ?? "")
+            Text("\(weather.currentWeather.uvIndex.value)")
+        }
     }
 }
