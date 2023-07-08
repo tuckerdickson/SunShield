@@ -11,35 +11,42 @@ import WeatherKit
 struct ExtendedForecastView: View {
     
     let dayWeatherList: [DayWeather]
+    let colorBg = Color(#colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1))
+    let colorText = Color.white
     
     var body: some View {
-        VStack(alignment: .leading){
-            Text("10-DAY FORECAST")
-                .font(.caption)
-                .opacity(0.5)
+        VStack(alignment: .leading) {
             
-            List(dayWeatherList, id: \.date) { dayWeather in
-                HStack {
-                    Text(dayWeather.date.formatDayAbbreviated())
-                    Image(systemName: "\(dayWeather.symbolName).fill")
-                        .foregroundColor(.yellow)
-                    Text(dayWeather.uvIndex.value.formatted())
-                    Text(dayWeather.lowTemperature.formatted())
-                    Text(dayWeather.highTemperature.formatted())
+            Text("Daily Forecast")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(colorText)
+            
+            VStack() {
+                ForEach(dayWeatherList, id: \.date) { dayWeather in
+                    HStack {
+                        Text(dayWeather.date.formatDayAbbreviated())
+                            .foregroundColor(colorText)
+                        Text(String(dayWeather.uvIndex.value))
+                            .foregroundColor(getColorUV(for: dayWeather))
+                        Spacer()
+                    }
                 }
-                .listRowBackground(Color.blue)
             }
-            .listStyle(.plain)
         }
-        .background {
-            Color.blue
-        }
-        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .padding()
+        .background(colorBg)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+    }
+    
+    func getColorUV(for weather: DayWeather) -> Color {
+        let uv = weather.uvIndex.value
+
+        if uv <= 2 { return Color.green }
+        else if uv <= 5 { return Color.yellow }
+        else if uv <= 7 { return Color.orange }
+        else if uv <= 10 { return Color.red }
+        else { return Color.purple }
     }
 }
 
-struct ExtendedForecastView_Previews: PreviewProvider {
-    static var previews: some View {
-        ExtendedForecastView(dayWeatherList: [])
-    }
-}

@@ -7,39 +7,32 @@
 
 import SwiftUI
 import WeatherKit
-import Charts
 
 struct HourlyForecastView: View {
     
     let hourWeatherList: [HourWeather]
+    let colorBg = Color(#colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1))
+    let colorText = Color.white
     
     var body: some View {
         VStack(alignment: .leading) {
             
-            Text("HOURLY FORECAST")
+            Text("Hourly Forecast")
                 .font(.title)
                 .fontWeight(.bold)
-                .foregroundColor(.black)
+                .foregroundColor(colorText)
             
             
-            ScrollView(.horizontal) {
+            ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(hourWeatherList, id: \.date) { hourWeather in
-                        BarView(weather: hourWeather)
+                        HourlyBarView(weather: hourWeather)
                     }
                 }
             }
         }
         .padding()
-//        .background {
-//            Color.blue
-//        }
-//        .clipShape(RoundedRectangle(cornerRadius: 20))
-    }
-}
-
-struct HourlyForecastView_Previews: PreviewProvider {
-    static var previews: some View {
-        HourlyForecastView(hourWeatherList: [])
+        .background(colorBg)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
     }
 }

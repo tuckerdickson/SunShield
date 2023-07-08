@@ -28,19 +28,19 @@ struct ContentView: View {
     var body: some View {
         VStack {
             if let weather {
-                // header
-                HeaderView(locationManager: locationManager, weather: weather)
-
-                // hourly forecast
-                HourlyForecastView(hourWeatherList: hourlyWeatherData)
-
-//                // extended (10-day) forecast
-//                ExtendedForecastView(dayWeatherList: weather.dailyForecast.forecast)
-
+                ScrollView(.vertical, showsIndicators: false) {
+                    // header
+                    HeaderView(locationManager: locationManager, weather: weather)
+                    
+                    // hourly forecast
+                    HourlyForecastView(hourWeatherList: hourlyWeatherData)
+                    
+                    // extended (10-day) forecast
+                    ExtendedForecastView(dayWeatherList: weather.dailyForecast.forecast)
+                }
             }
         }
-        .padding(30)
-        .foregroundColor(.white)
+        .padding(10)
         .task(id:locationManager.currentLocation) {
             do {
                 if let location = locationManager.currentLocation {
@@ -50,6 +50,8 @@ struct ContentView: View {
                 print(error)
             }
         }
+        
+        Spacer()
     }
 }
 

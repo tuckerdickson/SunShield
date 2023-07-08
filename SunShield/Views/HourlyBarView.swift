@@ -8,10 +8,12 @@
 import SwiftUI
 import WeatherKit
 
-struct BarView: View {
+struct HourlyBarView: View {
+    
     let weather: HourWeather
     
-    var uvColor: Color {
+    let colorText = Color.white
+    var colorUV: Color {
         let uv = weather.uvIndex.value
 
         if uv <= 2 { return Color.green }
@@ -30,23 +32,22 @@ struct BarView: View {
                     .foregroundColor(.gray)
                 Capsule()
                     .frame(width: 30, height: CGFloat(weather.uvIndex.value)*20)
-                    .foregroundColor(uvColor)
+                    .foregroundColor(colorUV)
             }
             
             // uv reading above bar mark
             ZStack {
                 Circle()
-                    .stroke(uvColor, lineWidth: 3)
+                    .stroke(colorUV, lineWidth: 3)
                     .foregroundColor(.white)
                     .frame(width: 30, height: 30)
                 Text(String(weather.uvIndex.value))
-                    .foregroundColor(.black)
+                    .foregroundColor(colorText)
             }
             
             // time below bar mark
             Text(weather.date.formatTimeAbbreviated())
-                .foregroundColor(.black)
-            
+                .foregroundColor(colorText)
         }
     }
 }
