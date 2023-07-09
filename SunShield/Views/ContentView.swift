@@ -13,13 +13,19 @@ struct ContentView: View {
     @StateObject var locationManager = LocationManager()
     @State private var weather: Weather?
 
-    let weatherService = WeatherService.shared
-
     var hourlyWeatherData: [HourWeather] {
         if let weather {
-            return Array(weather.hourlyForecast.filter {hourlyWeather in
+            return Array(weather.hourlyForecast.filter { hourlyWeather in
                 return hourlyWeather.date.timeIntervalSince(Date()) >= 0
             }.prefix(24))
+        } else {
+            return []
+        }
+    }
+    
+    var dailyWeatherData: [DayWeather] {
+        if let weather {
+            return Array(weather.dailyForecast.forecast.prefix(10))
         } else {
             return []
         }
@@ -30,28 +36,34 @@ struct ContentView: View {
             if let weather {
                 ScrollView(.vertical, showsIndicators: false) {
                     // header
-                    HeaderView(locationManager: locationManager, weather: weather)
+                    HeaderView(city: locationManager.city ?? "City",
+                               municipality: locationManager.state ?? "State",
+                               weather: weather)
                     
                     // hourly forecast
                     HourlyForecastView(hourWeatherList: hourlyWeatherData)
                     
                     // extended (10-day) forecast
-                    ExtendedForecastView(dayWeatherList: weather.dailyForecast.forecast)
+                    ExtendedForecastView(dayWeatherList: dailyWeatherData)
                 }
             }
         }
         .padding(10)
         .task(id:locationManager.currentLocation) {
-            do {
-                if let location = locationManager.currentLocation {
-                    self.weather = try await weatherService.weather(for: location)
-                }
-            } catch {
-                print(error)
-            }
+            await getWeather()
         }
         
         Spacer()
+    }
+    
+    func getWeather() async {
+        do {
+            if let location = locationManager.currentLocation {
+                self.weather = try await WeatherService.shared.weather(for: location)
+            }
+        } catch {
+            print(error)
+        }
     }
 }
 

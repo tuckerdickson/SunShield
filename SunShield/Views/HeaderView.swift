@@ -9,7 +9,8 @@ import SwiftUI
 import WeatherKit
 
 struct HeaderView: View {
-    let locationManager: LocationManager
+    let city: String
+    let municipality: String
     let weather: Weather
     
     var colorUV: Color {
@@ -26,12 +27,12 @@ struct HeaderView: View {
         HStack {
             VStack(alignment: .leading) {
                 
-                Text(locationManager.city ?? "City")
+                Text(city)
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.black)
                 
-                Text(locationManager.state ?? "State")
+                Text(municipality)
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.black)
