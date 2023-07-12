@@ -18,7 +18,7 @@
 		A293ED802A52072700B6D049 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293ED7F2A52072700B6D049 /* Extensions.swift */; };
 		A2DC958D2A5998B7003CDEF2 /* HourlyBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC958C2A5998B7003CDEF2 /* HourlyBarView.swift */; };
 		A2DC95932A5A1774003CDEF2 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC95922A5A1774003CDEF2 /* WeatherManager.swift */; };
-		A2DC95952A5C5036003CDEF2 /* LocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC95942A5C5036003CDEF2 /* LocationPickerView.swift */; };
+		A2DC95952A5C5036003CDEF2 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC95942A5C5036003CDEF2 /* SearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,7 @@
 		A293ED7F2A52072700B6D049 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A2DC958C2A5998B7003CDEF2 /* HourlyBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyBarView.swift; sourceTree = "<group>"; };
 		A2DC95922A5A1774003CDEF2 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
-		A2DC95942A5C5036003CDEF2 /* LocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerView.swift; sourceTree = "<group>"; };
+		A2DC95942A5C5036003CDEF2 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +94,7 @@
 				A293ED7A2A51EBC800B6D049 /* HourlyForecastView.swift */,
 				A293ED7C2A51EBD700B6D049 /* ExtendedForecastView.swift */,
 				A2DC958C2A5998B7003CDEF2 /* HourlyBarView.swift */,
-				A2DC95942A5C5036003CDEF2 /* LocationPickerView.swift */,
+				A2DC95942A5C5036003CDEF2 /* SearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,7 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2DC958D2A5998B7003CDEF2 /* HourlyBarView.swift in Sources */,
-				A2DC95952A5C5036003CDEF2 /* LocationPickerView.swift in Sources */,
+				A2DC95952A5C5036003CDEF2 /* SearchView.swift in Sources */,
 				A293ED672A50F4FF00B6D049 /* ContentView.swift in Sources */,
 				A293ED652A50F4FF00B6D049 /* SunShieldApp.swift in Sources */,
 				A293ED772A50F5EA00B6D049 /* LocationManager.swift in Sources */,

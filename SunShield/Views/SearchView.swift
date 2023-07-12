@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LocationPickerView: View {
+struct SearchView: View {
     var body: some View {
         VStack {
             
@@ -17,6 +17,6 @@ struct LocationPickerView: View {
 
 struct LocationPickerView_Previews: PreviewProvider {
     static var previews: some View {
-        LocationPickerView()
+        SearchView()
     }
 }

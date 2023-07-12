@@ -13,12 +13,12 @@ struct ContentView: View {
     @StateObject var locationManager = LocationManager()
     
     var body: some View {
-        if locationManager.authorizationStatus == .authorizedWhenInUse {
+        if locationManager.manager.authorizationStatus == .authorizedWhenInUse {
             VStack {
                 ScrollView(.vertical, showsIndicators: false) {
                     // location currently selected and current uv index
-                    HeaderView(city: locationManager.city ?? "City",
-                               municipality: locationManager.state ?? "State",
+                    HeaderView(city: locationManager.city,
+                               municipality: locationManager.state,
                                uvIndex: weatherManager.uvIndex)
                     
                     // bar chart and hourly uv predictions

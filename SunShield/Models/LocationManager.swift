@@ -9,76 +9,65 @@ import Foundation
 import CoreLocation
 
 class LocationManager: NSObject, ObservableObject {
-   
-    @Published var authorizationStatus: CLAuthorizationStatus?
-    private let locationManager = CLLocationManager()
-    var location: CLLocation {
-        locationManager.location ?? CLLocation(latitude: 37.322998, longitude: 122.032181)
-    }
+    // MARK: Properties
+    @Published var manager: CLLocationManager = .init()
     
-    var city: String?
-    var state: String?
+    public var location: CLLocation = .init()
+    public var city: String = "Cupertino"
+    public var state: String = "CA"
     
     override init() {
         super.init()
-        locationManager.delegate = self
+        
+        manager.delegate = self
+        manager.requestWhenInUseAuthorization() // TODO: change this to always?
+        
+        if manager.authorizationStatus == .authorizedAlways ||
+            manager.authorizationStatus == .authorizedWhenInUse {
+            location = manager.location ?? CLLocation(latitude: 37.322998, longitude: 122.032181)
+            lookUpCurrentLocation()
+        }
+        
     }
     
-    // determines the city and state name for a (lat,long) location
-    func lookUpCurrentLocation(for location: CLLocation) {
-        let geocoder = CLGeocoder()
+    // MARK: Reverse geocoding
+    func lookUpCurrentLocation() {
+        let geocoder = CLGeocoder()        
         geocoder.reverseGeocodeLocation(location) { placemarks, error in
             guard let place = placemarks?.first, error == nil else {
                 return
             }
             
-            self.city = place.locality
-            self.state = place.administrativeArea
+            self.city = place.locality ?? self.city
+            self.state = place.administrativeArea ?? self.state
         }
+    }
+    
+    func handleLocationError() {
+        // TODO: HANDLE ERROR
     }
 }
 
 extension LocationManager: CLLocationManagerDelegate {
-    
-    // called when the user's location is updated
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
-    }
-    
-    // called when the location authorization status is changed
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    // MARK: Location Authorization
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
-        // authorized; get the user's location
-        case .authorizedWhenInUse:
-            authorizationStatus = .authorizedWhenInUse
-            locationManager.requestLocation()
-            lookUpCurrentLocation(for: location)
-            break
-            
-        // restricted; don't do anything
-        case .restricted:
-            authorizationStatus = .restricted
-            break
-        
-        // denied; don't do anything
-        case .denied:
-            authorizationStatus = .denied
-            break
-            
-        // not determined; request authorization
-        case .notDetermined:
-            authorizationStatus = .notDetermined
-            locationManager.requestWhenInUseAuthorization()
-            break
-            
-        // all other cases; don't do anything
-        default:
-            break
+        case .authorizedAlways:     manager.requestLocation()
+        case .authorizedWhenInUse:  manager.requestLocation()
+        case .notDetermined:        manager.requestWhenInUseAuthorization()
+        case .denied:               handleLocationError()
+        default: ()                 // TODO: figure this out
         }
     }
     
+    // MARK: Did update locations
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        lookUpCurrentLocation()
+        location = locations.last ?? CLLocation(latitude: 37.322998, longitude: 122.032181)
+    }
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("\(error.localizedDescription)")
+        // TODO: HANDLE ERROR
     }
 }
 
