@@ -9,60 +9,31 @@ import SwiftUI
 import WeatherKit
 
 struct ContentView: View {
-
+    @ObservedObject var weatherManager = WeatherManager()
     @StateObject var locationManager = LocationManager()
-    @State private var weather: Weather?
-
-    var hourlyWeatherData: [HourWeather] {
-        if let weather {
-            return Array(weather.hourlyForecast.filter { hourlyWeather in
-                return hourlyWeather.date.timeIntervalSince(Date()) >= 0
-            }.prefix(24))
-        } else {
-            return []
-        }
-    }
     
-    var dailyWeatherData: [DayWeather] {
-        if let weather {
-            return Array(weather.dailyForecast.forecast.prefix(10))
-        } else {
-            return []
-        }
-    }
-
     var body: some View {
-        VStack {
-            if let weather {
+        if locationManager.authorizationStatus == .authorizedWhenInUse {
+            VStack {
                 ScrollView(.vertical, showsIndicators: false) {
-                    // header
+                    // location currently selected and current uv index
                     HeaderView(city: locationManager.city ?? "City",
                                municipality: locationManager.state ?? "State",
-                               weather: weather)
+                               uvIndex: weatherManager.uvIndex)
                     
-                    // hourly forecast
-                    HourlyForecastView(hourWeatherList: hourlyWeatherData)
+                    // bar chart and hourly uv predictions
+                    HourlyForecastView(hourWeatherList: weatherManager.hourWeather)
                     
-                    // extended (10-day) forecast
-                    ExtendedForecastView(dayWeatherList: dailyWeatherData)
+                    // 10-day forecast list
+                    ExtendedForecastView(dayWeatherList: weatherManager.dayWeather)
                 }
             }
-        }
-        .padding(10)
-        .task(id:locationManager.currentLocation) {
-            await getWeather()
-        }
-        
-        Spacer()
-    }
-    
-    func getWeather() async {
-        do {
-            if let location = locationManager.currentLocation {
-                self.weather = try await WeatherService.shared.weather(for: location)
+            .padding()
+            .task {
+                await weatherManager.requestWeather(for: locationManager.location)
             }
-        } catch {
-            print(error)
+        } else {
+            Text("error loading location")
         }
     }
 }

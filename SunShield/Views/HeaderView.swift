@@ -11,11 +11,11 @@ import WeatherKit
 struct HeaderView: View {
     let city: String
     let municipality: String
-    let weather: Weather
+    let uvIndex: String
     
     var colorUV: Color {
-        let uv = weather.currentWeather.uvIndex.value
-
+        let uv = Int(uvIndex) ?? -999
+        
         if uv <= 2 { return Color.green }
         else if uv <= 5 { return Color.yellow }
         else if uv <= 7 { return Color.orange }
@@ -47,7 +47,7 @@ struct HeaderView: View {
                     .foregroundColor(colorUV)
                     .frame(width: 80, height: 80)
                 
-                Text(String(weather.currentWeather.uvIndex.value))
+                Text(uvIndex)
                     .font(.system(size: 64))
                     .fontWeight(.bold)
                     .foregroundColor(colorUV)
